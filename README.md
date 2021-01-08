@@ -1,3 +1,5 @@
+[![](.github/badges/SponsoredbyIgalia.svg)](https://www.igalia.com)
+
 # JS-Fuzzer
 
 Javascript fuzzer for stand-alone shells like D8, Chakra, JSC or Spidermonkey.
