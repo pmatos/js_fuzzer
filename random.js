@@ -66,6 +66,12 @@ function twoBucketSample(lowProbArray, highProbArray, factor, count) {
   // Track number of available elements for choosing.
   let low = lowProbArray.length;
   let high = highProbArray.length;
+  if (low + high < count) {
+    console.log("About to FAIL:");
+    console.log(`  low: ${low}, high: ${high}`);
+    console.log(`  count: ${count}`);
+    console.log(`  expected low + high >= count`);
+  }
   assert(low + high >= count);
   const result = [];
   for (let i = 0; i < count; i++) {

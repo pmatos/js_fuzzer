@@ -37,6 +37,7 @@ function* walkDirectory(directory, filter) {
 class Corpus {
   // Input corpus.
   constructor(inputDir, corpusName, extraStrict=false) {
+    console.log(`Initializing corpus ${corpusName} from ${inputDir}`);
     this.inputDir = inputDir;
     this.extraStrict = extraStrict;
 
@@ -64,6 +65,13 @@ class Corpus {
     }
     random.shuffle(this.softSkippedFiles);
     random.shuffle(this.permittedFiles);
+
+    if (this.softSkippedFiles.length == 0) {
+        console.log(`softSkippedFiles empty for ${corpusName}`);
+    }
+    if (this.permittedFiles.length == 0) {
+        console.log(`permittedFiles empty for ${corpusName}`);
+    }
   }
 
   // Relative paths of all files in corpus.

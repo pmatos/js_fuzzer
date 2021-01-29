@@ -77,7 +77,7 @@ function* randomInputGen(engine) {
   const chakraCorpus = new corpus.Corpus(inputDir, 'chakra');
   const spiderMonkeyCorpus = new corpus.Corpus(inputDir, 'spidermonkey');
   const jscCorpus = new corpus.Corpus(inputDir, 'WebKit/JSTests');
-  const crashTestsCorpus = new corpus.Corpus(inputDir, 'CrashTests');
+    //  const crashTestsCorpus = new corpus.Corpus(inputDir, 'CrashTests');
 
   for (let i = 0; i < program.no_of_files; i++) {
     let inputs;
@@ -85,25 +85,29 @@ function* randomInputGen(engine) {
       inputs = getRandomInputs(
           v8Corpus,
           random.shuffle([chakraCorpus, spiderMonkeyCorpus, jscCorpus,
-                          crashTestsCorpus, v8Corpus]),
+                          //crashTestsCorpus,
+                          v8Corpus]),
           MAX_TEST_INPUTS_PER_TEST);
     } else if (engine == 'chakra') {
       inputs = getRandomInputs(
           chakraCorpus,
           random.shuffle([v8Corpus, spiderMonkeyCorpus, jscCorpus,
-                          crashTestsCorpus]),
+                         // crashTestsCorpus
+                         ]),
           MAX_TEST_INPUTS_PER_TEST);
     } else if (engine == 'spidermonkey') {
       inputs = getRandomInputs(
           spiderMonkeyCorpus,
           random.shuffle([v8Corpus, chakraCorpus, jscCorpus,
-                          crashTestsCorpus]),
+                         // crashTestsCorpus
+                         ]),
           MAX_TEST_INPUTS_PER_TEST);
     } else {
       inputs = getRandomInputs(
           jscCorpus,
           random.shuffle([chakraCorpus, spiderMonkeyCorpus, v8Corpus,
-                          crashTestsCorpus]),
+                         // crashTestsCorpus
+                         ]),
           MAX_TEST_INPUTS_PER_TEST);
     }
 
@@ -163,9 +167,11 @@ function main() {
     app_name = app_name.substr(0, app_name.length - 4);
   }
 
-  if (app_name === 'd8' || app_name === 'v8_foozzie.py') {
-    // V8 supports running the raw d8 executable or the differential fuzzing
-    // harness 'foozzie'.
+  if (app_name === 'd8' ||
+      app_name === 'v8_simple_inspector_fuzzer' ||
+      app_name === 'v8_foozzie.py') {
+    // V8 supports running the raw d8 executable, the inspector fuzzer or
+    // the differential fuzzing harness 'foozzie'.
     settings.engine = 'V8';
   } else if (app_name === 'ch') {
     settings.engine = 'chakra';
