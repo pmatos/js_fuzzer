@@ -1,3 +1,8 @@
+[![](.github/badges/SponsoredbyIgalia.svg)](https://www.igalia.com)
+
+This repo is based on the js_fuzzer distributed by v8.
+See https://chromium.googlesource.com/v8/v8/+/master/tools/clusterfuzz/js_fuzzer/README.md
+
 # JS-Fuzzer
 
 Javascript fuzzer for stand-alone shells like D8, Chakra, JSC or Spidermonkey.
