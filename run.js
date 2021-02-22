@@ -84,30 +84,22 @@ function* randomInputGen(engine) {
     if (engine === 'V8') {
       inputs = getRandomInputs(
           v8Corpus,
-          random.shuffle([chakraCorpus, spiderMonkeyCorpus, jscCorpus,
-                          //crashTestsCorpus,
-                          v8Corpus]),
+          random.shuffle([chakraCorpus, spiderMonkeyCorpus, jscCorpus, v8Corpus]),
           MAX_TEST_INPUTS_PER_TEST);
     } else if (engine == 'chakra') {
       inputs = getRandomInputs(
           chakraCorpus,
-          random.shuffle([v8Corpus, spiderMonkeyCorpus, jscCorpus,
-                         // crashTestsCorpus
-                         ]),
+          random.shuffle([v8Corpus, spiderMonkeyCorpus, jscCorpus]),
           MAX_TEST_INPUTS_PER_TEST);
     } else if (engine == 'spidermonkey') {
       inputs = getRandomInputs(
           spiderMonkeyCorpus,
-          random.shuffle([v8Corpus, chakraCorpus, jscCorpus,
-                         // crashTestsCorpus
-                         ]),
+          random.shuffle([v8Corpus, chakraCorpus, jscCorpus]),
           MAX_TEST_INPUTS_PER_TEST);
     } else {
       inputs = getRandomInputs(
           jscCorpus,
-          random.shuffle([chakraCorpus, spiderMonkeyCorpus, v8Corpus,
-                         // crashTestsCorpus
-                         ]),
+          random.shuffle([chakraCorpus, spiderMonkeyCorpus, v8Corpus]),
           MAX_TEST_INPUTS_PER_TEST);
     }
 
